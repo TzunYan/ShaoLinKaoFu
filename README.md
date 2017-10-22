@@ -3,7 +3,7 @@ SLKF is good, it's really good
 
 ## Requirements
 
-* Python 3.6.6
+* Python 3.6.3
 * Django 1.11.6
 
 ## TODO
