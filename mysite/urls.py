@@ -19,6 +19,7 @@ from django.contrib.auth.views import login, logout
 from . import views
 
 urlpatterns = [
+    url(r'^$', views.gitCommitYet),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/login/$', login, {'template_name':'registration/login.html'}, name='login'),
     url(r'^accounts/logout/$',logout),
