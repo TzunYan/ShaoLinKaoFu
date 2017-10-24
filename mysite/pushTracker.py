@@ -10,7 +10,7 @@ def checkTodayCommit(pushTime):
     bx = x.astimezone(pytz.timezone('Asia/Taipei'))
 
     if bx.strftime('%Y:%m:%d') == datetime.now().strftime('%Y:%m:%d'):
-        return "Yes, you commit"
+        return True
 
 def printUserGitStatus():
     githubRequest = requests.get('http://api.github.com/users/otakuemperor/events')
@@ -18,7 +18,8 @@ def printUserGitStatus():
 
     for i in range(len(rowData)):
         if(rowData[i]['type'] == 'PushEvent'):
-            checkTodayCommit(rowData[i]['created_at'])
+            if(checkTodayCommit(rowData[i]['created_at'])):
+                return "Yes you lovely kid."
             break
 
-    return "No, you don't"
+    return "No, you poor guy."
