@@ -12,14 +12,14 @@ def checkTodayCommit(pushTime):
     if bx.strftime('%Y:%m:%d') == datetime.now().strftime('%Y:%m:%d'):
         return True
 
-def printUserGitStatus():
-    githubRequest = requests.get('http://api.github.com/users/otakuemperor/events')
+def printUserGitStatus(username):
+    githubRequest = requests.get('http://api.github.com/users/' + username +'/events')
     rowData = json.loads(githubRequest.text)
 
     for i in range(len(rowData)):
         if(rowData[i]['type'] == 'PushEvent'):
             if(checkTodayCommit(rowData[i]['created_at'])):
-                return "Yes you lovely kid."
+                return { 'disUsername' : username , 'disMessage' : "Yes you lovely kid."}
             break
 
-    return "No, you poor guy."
+    return { 'disUsername' : username , 'disMessage' : "No, you poor guy." }

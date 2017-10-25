@@ -25,7 +25,7 @@ def logout(request):
     return HttpResponseRedirect('/index/')
 
 def gitCommitYet(request):
-    result = printUserGitStatus()
+    result = printUserGitStatus('otakuemperor')
     return render_to_response('whyIndexIsNotInTheRootDirButInIndexDir.html',{
         'gitStatus' : result
     })
